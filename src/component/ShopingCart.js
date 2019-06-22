@@ -29,16 +29,20 @@ class ShopingCart extends Component {
     }
   }
 
-  removeFromCart(id){
+  removeFromCart(id,event){
     let data_set = this.state.product_list;
+    let index_remove = -1;
     _.map(data_set, (data, index) => {
-      if(data.id && data.id===id){
-        data_set.splice(index+1, 1);
+      if((data.id && id) && data.id===id){
+        index_remove = index;
       }
     });
-    this.setState({product_list:data_set});
-    localStorage.setItem('CartObject',JSON.stringify(data_set));
-    this._calculateTotals();
+    if(index_remove>-1){
+      data_set.splice(index_remove, 1);
+      this.setState({product_list:data_set, products_count:data_set.length});
+      localStorage.setItem('CartObject',JSON.stringify(data_set));
+      this._calculateTotals();
+    }
   }
 
   onQtyChange(id,qty,event){
