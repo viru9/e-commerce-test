@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
-import {Link} from 'react-router-dom';
+import {withRouter} from 'react-router-dom';
 import _ from 'lodash';
 import { Card, CardHeader, CardBody,CardTitle, CardText, Button,
    CardFooter, CardImg, Container, Row, Col,Input, Form, FormGroup} from 'reactstrap';
@@ -18,7 +18,7 @@ class ProductList extends Component {
 
   componentDidMount(){
     this.props.getProductList();
-    localStorage.clear();
+    // localStorage.clear();
   }
 
   addProduct(event){
@@ -64,23 +64,29 @@ class ProductList extends Component {
      }
   }
 
+  loadItemPage(id,event){
+    const { history } = this.props;
+        history.replace({
+            pathname: `item-page/${id}`
+        });
+  }
+
   renderProductList(){
 
-    const { productList } = this.props;
+    const { productList, history } = this.props;
 
     let qty = 1;
     if(productList.products.length>0){
       return _.map(productList.products, data => {
-        console.log('data: ',data);
         return (
           <Col xs="6" sm="3" key={data.id}>
             <Card className="card-main">
-              <CardImg className="card-image" variant="top" src={data.image} />
-                <CardBody>
+              <CardImg onClick={()=> {this.loadItemPage(data.id)}}  className="card-image pointer-icon" variant="top" src={data.image} />
+                <CardBody onClick={()=> {this.loadItemPage(data.id)}} className="pointer-icon">
                   <CardTitle>{data.title.length > 40 ? (data.title.substring(1, 40)+"...") : data.title }</CardTitle>
                     <CardText></CardText>
-                      </CardBody>
-                      <CardFooter>
+                </CardBody>
+                 <CardFooter>
                         <Form onSubmit={this.addProduct.bind(this)}>
                           <Row form>
                           <Col md={8}>
@@ -117,4 +123,4 @@ function mapStateToProps(productList) {
   return {productList};
 }
 
-export default connect(mapStateToProps, {getProductList})(ProductList);
+export default withRouter(connect(mapStateToProps, {getProductList})(ProductList));

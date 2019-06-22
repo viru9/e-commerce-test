@@ -5,6 +5,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import Home from './component/Home';
 import ShopingCart from './component/ShopingCart';
+import ItemPage from './component/ItemPage';
 
 import * as serviceWorker from './serviceWorker';
 
@@ -28,8 +29,9 @@ ReactDOM.render(
   <Provider store={store}>
   <BrowserRouter>
     <Switch>
-      <Route path="/shoping-cart" component={ShopingCart}/>
-      <Route path="/" component={Home}/>
+      <Route exact path="/item-page/:id" component={ItemPage}/>
+      <Route exact path="/shoping-cart" component={ShopingCart}/>
+      <Route exact path="/" component={Home}/>
     </Switch>
   </BrowserRouter>
 </Provider>

@@ -14,6 +14,8 @@ import {
   DropdownToggle,
   DropdownMenu,
   DropdownItem } from 'reactstrap';
+import {withRouter} from 'react-router-dom';
+
 
 class MainNav extends Component {
 
@@ -67,4 +69,4 @@ function mapStateToProps(state) {
   return {mainNav: state};
 }
 
-export default connect(mapStateToProps, {})(MainNav);
+export default withRouter(connect(mapStateToProps, {})(MainNav));
