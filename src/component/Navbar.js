@@ -42,6 +42,11 @@ class MainNav extends Component {
               <NavLink href="/">Products</NavLink>
             </NavItem>
           </Nav>
+          <Nav className="ml-auto" navbar>
+            <NavItem>
+              <i class="fas fa-shopping-cart"></i>
+            </NavItem>
+          </Nav>
         </Collapse>
       </Navbar>
     );
