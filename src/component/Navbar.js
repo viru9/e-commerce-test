@@ -54,9 +54,11 @@ class MainNav extends Component {
         <NavbarToggler onClick={this.toggle} />
         <Collapse isOpen={this.state.isOpen} navbar>
           <Nav className="ml-auto" navbar>
-          <Link className="link-styling" to="shoping-cart">
-          {this.state.products_count}<i class="fas fa-shopping-cart"></i>
-          </Link>
+
+          <NavItem className="pointer-icon" onClick={()=> {history.replace({pathname: 'shoping-cart'})}}>
+            {this.state.products_count}<i class="fas fa-shopping-cart"></i>
+          </NavItem>
+
           </Nav>
         </Collapse>
       </Navbar>
