@@ -4,6 +4,8 @@ import './css/css/main.css';
 import React from 'react';
 import ReactDOM from 'react-dom';
 import Home from './component/Home';
+import ShopingCart from './component/ShopingCart';
+
 import * as serviceWorker from './serviceWorker';
 
 import {Provider} from 'react-redux';
@@ -26,6 +28,7 @@ ReactDOM.render(
   <Provider store={store}>
   <BrowserRouter>
     <Switch>
+      <Route path="/shoping-cart" component={ShopingCart}/>
       <Route path="/" component={Home}/>
     </Switch>
   </BrowserRouter>

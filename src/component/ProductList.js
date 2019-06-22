@@ -18,7 +18,7 @@ class ProductList extends Component {
 
   componentDidMount(){
     this.props.getProductList();
-    // localStorage.clear();
+    localStorage.clear();
   }
 
   addProduct(event){
@@ -28,7 +28,8 @@ class ProductList extends Component {
        id:event.target[1].value,
        title:event.target[2].value,
        body:event.target[3].value,
-       image:event.target[3].value
+       price:event.target[4].value,
+       image:event.target[5].value
      }
 
      let store_cart = JSON.parse(localStorage.getItem('CartObject'));
@@ -70,10 +71,11 @@ class ProductList extends Component {
     let qty = 1;
     if(productList.products.length>0){
       return _.map(productList.products, data => {
+        console.log('data: ',data);
         return (
           <Col xs="6" sm="3" key={data.id}>
-            <Card>
-              <CardImg variant="top" src="https://www.gstatic.com/webp/gallery/1.jpg" />
+            <Card className="card-main">
+              <CardImg className="card-image" variant="top" src={data.image} />
                 <CardBody>
                   <CardTitle>{data.title.length > 40 ? (data.title.substring(1, 40)+"...") : data.title }</CardTitle>
                     <CardText></CardText>
@@ -87,6 +89,8 @@ class ProductList extends Component {
                               <Input type="hidden" value={data.id}/>
                               <Input type="hidden" value={data.title}/>
                               <Input type="hidden" value={data.body}/>
+                              <Input type="hidden" value={data.price}/>
+                              <Input type="hidden" value={data.image}/>
                             </FormGroup>
                               </Col>
                           <Col md={4}><Button type="submit" variant="primary">Add</Button></Col>

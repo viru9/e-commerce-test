@@ -45,16 +45,16 @@ class MainNav extends Component {
   }
 
   render() {
+    const {history} = this.props;
     return (
       <Navbar color="light" light expand="md">
         <NavbarBrand href="/">E-Shopping</NavbarBrand>
         <NavbarToggler onClick={this.toggle} />
         <Collapse isOpen={this.state.isOpen} navbar>
           <Nav className="ml-auto" navbar>
-            <NavItem className="pointer-icon">
-            {this.state.products_count}
-              <i class="fas fa-shopping-cart"></i>
-            </NavItem>
+          <Link className="link-styling" to="shoping-cart">
+          {this.state.products_count}<i class="fas fa-shopping-cart"></i>
+          </Link>
           </Nav>
         </Collapse>
       </Navbar>
