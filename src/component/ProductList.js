@@ -85,7 +85,7 @@ class ProductList extends Component {
                           <Row form>
                           <Col md={8}>
                             <FormGroup>
-                              <Input type="number" defaultValue='1'/>
+                              <Input type="number" defaultValue='1' min="1"/>
                               <Input type="hidden" value={data.id}/>
                               <Input type="hidden" value={data.title}/>
                               <Input type="hidden" value={data.body}/>
