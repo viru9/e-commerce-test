@@ -71,7 +71,7 @@ class ShopingCart extends Component {
     if(total>500){
       let disc = parseInt(total/500);
       discount = (total * (2/100*disc));
-      sub_total = total - discount;
+      sub_total = (total + tax) - discount;
     }
     else {
       discount=0;
