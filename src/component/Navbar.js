@@ -21,8 +21,21 @@ class MainNav extends Component {
     super(props);
     this.toggle = this.toggle.bind(this);
     this.state = {
-      isOpen: false
+      isOpen: false,
+      products_count:0
     };
+  }
+
+  componentDidMount(){
+    if(JSON.parse(localStorage.getItem('CartObject'))){
+      this.setState({products_count:JSON.parse(localStorage.getItem('CartObject')).length});
+    }
+  }
+
+  componentWillReceiveProps(nextPrev){
+    if(nextPrev.products_count){
+      this.setState({products_count:nextPrev.products_count});
+    }
   }
 
   toggle() {
@@ -38,12 +51,8 @@ class MainNav extends Component {
         <NavbarToggler onClick={this.toggle} />
         <Collapse isOpen={this.state.isOpen} navbar>
           <Nav className="ml-auto" navbar>
-            <NavItem>
-              <NavLink href="/">Products</NavLink>
-            </NavItem>
-          </Nav>
-          <Nav className="ml-auto" navbar>
-            <NavItem>
+            <NavItem className="pointer-icon">
+            {this.state.products_count}
               <i class="fas fa-shopping-cart"></i>
             </NavItem>
           </Nav>

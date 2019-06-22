@@ -18,7 +18,7 @@ class ProductList extends Component {
 
   componentDidMount(){
     this.props.getProductList();
-    localStorage.clear();
+    // localStorage.clear();
   }
 
   addProduct(event){
@@ -37,6 +37,7 @@ class ProductList extends Component {
        let obj = [];
        obj.push(cart_object)
        localStorage.setItem('CartObject',JSON.stringify(obj));
+       this.props.on_product_add(1);
      }
      else {
        let store_cart = JSON.parse(localStorage.getItem('CartObject'));
@@ -58,7 +59,7 @@ class ProductList extends Component {
        }
 
        localStorage.setItem('CartObject',JSON.stringify(store_cart));
-       console.log("CART::: ",JSON.parse(localStorage.getItem('CartObject')));
+       this.props.on_product_add(JSON.parse(localStorage.getItem('CartObject')).length);
      }
   }
 
