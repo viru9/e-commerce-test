@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
-import App from './App';
+import './css/css/main.css';
+import Home from './component/Home';
 import * as serviceWorker from './serviceWorker';
 
 import {Provider} from 'react-redux';
@@ -24,7 +24,7 @@ ReactDOM.render(
   <Provider store={store}>
   <BrowserRouter>
     <Switch>
-      <Route path="/" component={App}/>
+      <Route path="/" component={Home}/>
     </Switch>
   </BrowserRouter>
 </Provider>
