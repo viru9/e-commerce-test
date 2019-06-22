@@ -1,6 +1,8 @@
+import 'bootstrap/dist/css/bootstrap.min.css';
+import './css/css/main.css';
+
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './css/css/main.css';
 import Home from './component/Home';
 import * as serviceWorker from './serviceWorker';
 

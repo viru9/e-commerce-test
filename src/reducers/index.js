@@ -1,8 +1,8 @@
 import { combineReducers } from 'redux';
-import HomeReducer from './home';
+import ProductListReducer from './product_list';
 
 const rootReducer = combineReducers({
-  home: HomeReducer
+  products: ProductListReducer
 });
 
 export default rootReducer;
