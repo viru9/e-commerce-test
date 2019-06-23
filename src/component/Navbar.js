@@ -55,7 +55,7 @@ class MainNav extends Component {
         <Collapse isOpen={this.state.isOpen} navbar>
           <Nav className="ml-auto" navbar>
 
-          <NavItem className="pointer-icon" onClick={()=> {history.replace({pathname: 'shoping-cart'})}}>
+          <NavItem className="pointer-icon" onClick={()=> {history.push({pathname: 'shoping-cart'})}}>
             {this.state.products_count}<i class="fas fa-shopping-cart"></i>
           </NavItem>
 

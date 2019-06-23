@@ -66,7 +66,7 @@ class ProductList extends Component {
 
   loadItemPage(id,event){
     const { history } = this.props;
-        history.replace({
+        history.push({
             pathname: `item-page/${id}`
         });
   }
